@@ -1,0 +1,52 @@
+import pygame
+
+# Define constants
+SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
+GRID_SIZE = (10, 20)  # 10 columns, 20 rows
+BLOCK_SIZE = 30  # Size of a block in pixels
+
+# Define colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+# Add more colors for Tetrominoes
+
+# Tetromino class
+class Tetromino:
+    # Define shapes and methods
+
+# Initialize Pygame
+pygame.init()
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption('Tetris')
+
+def draw_grid():
+    # Draw the Tetris grid
+
+def draw_tetromino(tetromino):
+    # Draw the Tetromino
+
+def main():
+    clock = pygame.time.Clock()
+    running = True
+    grid = [[0 for _ in range(GRID_SIZE[0])] for _ in range(GRID_SIZE[1])]
+    current_tetromino = Tetromino()
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            # Handle other events like key presses
+
+        # Game logic (moving Tetromino, checking collision, etc.)
+
+        screen.fill(BLACK)  # Clear screen
+        draw_grid()
+        draw_tetromino(current_tetromino)
+        pygame.display.flip()  # Update the display
+
+        clock.tick(60)  # Maintain 60 frames per second
+
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
