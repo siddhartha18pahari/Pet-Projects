@@ -1,0 +1,53 @@
+import random
+
+def get_input(prompt):
+    """Function to get input and check if it's not empty."""
+    user_input = input(prompt)
+    while not user_input.strip():
+        print("Please enter a valid input.")
+        user_input = input(prompt)
+    return user_input
+
+def choose_story():
+    """Function to randomly select a story template."""
+    stories = [
+        "Today I went to the zoo. I saw a(n) {adjective} {noun} jumping up and down in its tree. "
+        "It {verb_past} {adverb} through the large tunnel that led to its {adjective2} {noun2}.",
+
+        "In the {adjective} kingdom of {noun}, the {profession} {name} was known for {verb_ing} {adverb}. "
+        "One day, the {noun2} {verb_past} and everyone was {emotion}.",
+
+        "When I {verb_past} to the arcade, I couldn't believe my eyes. I saw a giant {noun} {verb_ing} on top of a {noun2}. "
+        "Everyone was {verb_ing2} {adverb}, and the atmosphere was really {adjective}."
+    ]
+    return random.choice(stories)
+
+print("Welcome to the enhanced Mad Libs game! Fill in the blanks to create your story.\n")
+
+# Choose a random story template
+story_template = choose_story()
+
+# Define the prompts based on placeholders in the story template
+prompts = {
+    "noun": "Enter a noun: ",
+    "noun2": "Enter another noun: ",
+    "adjective": "Enter an adjective: ",
+    "adjective2": "Enter another adjective: ",
+    "verb_past": "Enter a verb (past tense): ",
+    "verb_ing": "Enter a verb (present participle, -ing): ",
+    "verb_ing2": "Enter another verb (present participle, -ing): ",
+    "adverb": "Enter an adverb: ",
+    "profession": "Enter a profession: ",
+    "name": "Enter a name: ",
+    "emotion": "Enter an emotion: "
+}
+
+# Ask for user inputs
+inputs = {key: get_input(prompt) for key, prompt in prompts.items() if '{' + key + '}' in story_template}
+
+# Fill in the blanks in the story
+story = story_template.format(**inputs)
+
+# Print the completed story
+print("\nHere's your Mad Libs story:")
+print(story)
